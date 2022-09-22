@@ -8,6 +8,7 @@ import {
 import { MatSidenav } from '@angular/material/sidenav';
 import { BreakpointObserver } from '@angular/cdk/layout';
 import { NewsService } from './service/news.service';
+import { Sources, Article } from './types/news';
 
 @Component({
   selector: 'app-root',
@@ -16,9 +17,9 @@ import { NewsService } from './service/news.service';
 })
 export class AppComponent implements AfterViewInit, OnInit {
   title = 'news-app';
-  public sources: any = [];
-  public articles: any = [];
-  selectedNewsChannel: string = 'Top 10 Trending News!';
+  public sources: Sources[] = [];
+  public articles: Article[] = [];
+  selectedNewsChannel: string = 'rt';
   @ViewChild(MatSidenav) sideNav!: MatSidenav;
   constructor(
     private observer: BreakpointObserver,
@@ -48,6 +49,13 @@ export class AppComponent implements AfterViewInit, OnInit {
       }
     });
     this.cdr.detectChanges();
+  }
+
+  searchSource(source: any) {
+    this.newsApi.getArticlesByID(source.id).subscribe((res: any) => {
+      this.articles = res.articles;
+      this.selectedNewsChannel = source.name;
+    });
   }
 
   getSources() {}

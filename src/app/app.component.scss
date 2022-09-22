@@ -22,9 +22,15 @@ mat-sidenav-container {
   justify-content: flex-start;
   font-size: 1rem;
   margin: 10px 0;
+
   mat-icon {
     margin-right: 8px;
   }
+}
+
+.example-icon {
+  height: 24px;
+  margin-right: 10px;
 }
 
 mat-divider {

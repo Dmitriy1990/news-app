@@ -10,14 +10,14 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav="matSidenav">
     <img class="avatar mat-elavation-z8"
-      src="https://cdn4.vectorstock.com/i/thumb-large/50/08/news-alerts-breaking-logo-tv-design-element-vector-24575008.jpg"
+      src="https://ibcplastic.ru/file/news/2011/243/photo.png"
       alt="">
     <h4 class="name">Let's Program</h4>
     <mat-divider></mat-divider>
-    <ng-container>
-      <button  mat-button class="menu-button">
+    <ng-container *ngFor="let source of sources">
+      <button (click)="searchSource(source)" mat-button class="menu-button">
         <mat-icon>event_note</mat-icon>
-        <span></span>
+        <span>{{source.name}}</span>
       </button>
     </ng-container>
 
